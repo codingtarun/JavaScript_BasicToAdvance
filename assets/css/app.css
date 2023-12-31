@@ -1,0 +1,10 @@
+.full-height {
+  height: 100vh;
+}
+
+/** Guess the number **/
+#guess-the-number {
+  background-color: ghostwhite;
+  height: 80vh;
+  width: 80vh;
+}

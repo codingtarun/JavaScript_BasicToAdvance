@@ -179,3 +179,179 @@ console.log(list.indexOf(1990));
 
 console.log(list.includes(1990));
 
+
+/**
+ * Objects : Fundamental data type in javascript used to store & organize data.
+ * 
+ * key : value pair
+ * 
+ * property : value
+ * 
+ * data order doesn't matter
+ * 
+ */
+
+const objOne = {
+    name: 'Tarun Chauhan',
+    yob: 1990,
+    loaction: ['Gumma','Kotkhai','Shimla'],
+    hasDriverLiscence : true,
+    calAge : function(yob){
+        return 2023 - yob;
+    },
+    calAge2: function(){
+        return 2023 - this.yob
+    }
+};
+
+
+console.log(objOne);
+
+console.log(objOne.calAge(1990));
+console.log(objOne.calAge2());
+/**
+ * Difference between Arrays & Objects : 
+ * 
+ * 1. An object is an unordered collection of key-value / property-value pair and array is an ordered, integer-indexed collection of value, index starting fom 0.
+ * 2. Object access value : objOne.age / objOne['age] and Array access value : arrayOne[index],
+ * 3. Object is used when we need to represent entities with properties, ex name,age etc and array is used when we need to access items using the position.
+ * 4. Iteration in object : objOne.keys() / objOne.values() / objOne.entries() and in array : forEach(), map(), filter().
+ * 
+ * 
+ */
+
+/**
+ * How to retrieve data from object
+ */
+
+console.log(`My name is ${objOne.name}.`);
+console.log(`My YOB is ${objOne['yob']}`);
+
+
+/**
+ * Objects methods : 
+ * 
+ */
+
+/**
+ * Iteration : The For Loop
+ */
+
+
+for(var i = 0 ; i <= 10 ; i++){
+    console.log(`1 X ${i} = ${1*i}`);
+}
+
+
+/**
+ * Looping the arrays
+ */
+
+const loopArray = ['car','plane','house','phone','cycle','food'];
+
+for(var i = 0 ; i < loopArray.length ; i++){
+    console.log(loopArray[i]);
+}
+
+/**
+ * Looping backward and Loop inside a loop
+ */
+
+for(var i = loopArray.length-1; i >= 0; i --){
+    console.log(loopArray[i]);
+}
+
+for(var i = 1; i<=2; i ++){
+    console.log(`Following is the table of ${i}`);
+    for(var j = 1; j <= 10; j++ ){
+        console.log(`${i} X ${j} = ${i*j}`);
+    }
+}
+
+
+/**
+ * While loop 
+ */
+
+var x = 0;
+while(x < 10){
+    console.log(`Loop no ${x}`);
+    x++;
+}
+
+/**
+ * DOM manipulation
+ */
+
+/**
+ * Guess The Number Script
+ */
+
+/**
+ * Initializing the DOM
+ * 
+ * 1. A const variable is declared
+ * 2. 'document' object represents the entire HTML document.
+ * 3. 'getElementById' method is a 'document' object that retrives the html element with the given ID.
+ *  
+ */
+
+const highScoreText = document.getElementById('high-score');
+const yourScoreText = document.getElementById('your-score');
+const inputNumberInput = document.getElementById('input-number');
+var guessClueText = document.getElementById('guess-clue');
+const checkInputButton = document.getElementById('check-input');
+
+/**
+ * getting the text content of the element
+ */
+console.log(highScoreText.textContent);
+console.log(yourScoreText.textContent);
+
+/**
+ * Setting the text content of the element
+ */
+
+/**
+ * Reset the high score & your score
+ */
+highScoreText.textContent = 0;
+yourScoreText.textContent = 0;
+
+
+/**
+ * Generating & storing a random number into a variable
+ */
+
+const generateRandomNumber = () => Math.floor(Math.random() * 21); // used an arrow function to return an random bumber between 1 and 20
+const randomNumber = generateRandomNumber();
+console.log(`Random Number : ${randomNumber}.`);
+
+
+/**
+ * Handling a 'click' event
+ */
+
+checkInputButton.addEventListener('click',function(){
+    console.log(inputNumberInput.value);
+    if(!inputNumberInput.value){
+        guessClueText.textContent = `Enter value between 1 & 20.`;
+    }else{
+        if(inputNumberInput.value < 1 || inputNumberInput.value > 20){
+            guessClueText.textContent = `Enter value between 1 & 20.`;
+        }else {
+            if(randomNumber > inputNumberInput.value){
+                guessClueText.textContent = `Too Low!!!`;
+            }else if (randomNumber < inputNumberInput.value){
+                guessClueText.textContent = `Too high!!!`;
+            }else if(randomNumber == inputNumberInput.value){
+                guessClueText.textContent = `You won!!!`;
+            }else {
+                guessClueText.textContent = `Something wrong!!!`;
+            }
+        }
+    }
+    
+});
+
+
