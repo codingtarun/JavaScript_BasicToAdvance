@@ -338,51 +338,175 @@ let randomNumber = geneateRandomNumber();
 console.log(`Random Number : ${randomNumber}`);
 
 
+/**
+ * How JavaScript works behind the scene
+ * 
+ * 
+ * JavaScript : 
+ * 1. High-level : Manages resources automatically(memory management/processor threads etc). downside is that programms will never be fast and optimized as C or any low-level programming langauge.
+ * 2. Garbage-Collected : Automatically cleans up the unused memory, boosts overall performance.
+ * 3. Interprated/just-in-time compiled : Convert to machine code / compiling , Happens inside the JS engine.
+ * 4. Multi-paradigm : Paradigm : an approach and mindset of structuring code , which direct your coding style and style.
+ *                      3 popular paradigm are : 
+ *                      1. Procedural Programming.
+ *                      2. Object-oriented programming.
+ *                      3. Functional Programming.
+ *                  Java script supports all of these styles.
+ * 
+ * 5. Prototype-based object-oriented :   ex. when we create an array, we use a blueprint from the prototype array and we have some methods already working with it, this is due to the reason that our array inherits methods from the prototype array.
+ * 6. First class function : functions are treated as regular fuction i.e we can pass function as argument or we can return the function also.
+ * 7. Dynamic langauge : Variable datatype is automatically detected.(controversial topic).(typescript)
+ * 8. Single-threaded : Who JS engine handle 'multiple-tasks'. JS works only with single thread i.e can do only one thing at a time.
+ * 9. Non-blocking event loop : Even loop takes long running taks , execute them in the 'background' and puts them back in the main thread once they are finished.
+ * 
+ *
+ * 
+ * JavaScript Engine : Program that executes Javascript code.(GO THROUGH THE THEORY VIDEO AGAIN)
+ *  
+ *  
+ */
 
-// /**
-//  * Handling a 'click' event
-//  */
+/**
+ * Data structures & Modern Operations and strings : 
+ * 
+ * 
+ * Destructuring Arrays : (es6 feature) 
+ * 
+ */
 
-// checkInputButton.addEventListener('click',function(){
-//     console.log(inputNumberInput.value);
-//     if(!inputNumberInput.value){
-//         guessClueText.textContent = `Enter value between 1 & 20.`;
-//     }else{
-//         if(inputNumberInput.value < 1 || inputNumberInput.value > 20){
-//             guessClueText.textContent = `Enter value between 1 & 20.`;
-//             inputNumberInput.value = '';
-//         }else {
-//             if(randomNumber > inputNumberInput.value){
-//                 guessClueText.textContent = `Too Low!!!`;
-//                 yourScoreText.textContent -- ;
-//                 inputNumberInput.value = '';
-//             }else if (randomNumber < inputNumberInput.value){
-//                 guessClueText.textContent = `Too high!!!`;
-//                 yourScoreText.textContent -- ;
-//                 inputNumberInput.value = '';
-//             }else if(randomNumber == inputNumberInput.value){
-//                 guessClueText.textContent = `You won!!! Your socre is ${yourScoreText.textContent}`;
-//                 if(highScoreText.textContent < yourScoreText.textContent){
-//                     highScoreText.textContent = yourScoreText.textContent;
-//                 }
-//             }else {
-//                 guessClueText.textContent = `Something wrong!!!`;
-//                 inputNumberInput.value = '';
-//             }
-//         }
-//     }
-    
-// });
+// Creating an object & storing data into it :
 
-// /**
-//  * Reset button event handling
-//  */
-// resetGameButton.addEventListener('click',function(){
-//     //highScoreText.textContent = 0;
-//     yourScoreText.textContent = 20;
-//     guessClueText.textContent  = "Enter a game between 1 to 20";
-//     const randomNumber = generateRandomNumber();
-//     console.log(`Random Number : ${randomNumber}.`);
-// });
+const restaurant = {
+    name: '5 Start',
+    location: 'Main Bazar , Gumma, Kotkhai',
+    categories: [
+        'Indian',
+        'Chinese',
+        'Veg',
+        'Non-veg',
+        'Pahari'
+    ],
+    starterMenu: [
+        'Coffee',
+        'Garlic Bread',
+        'Chezze Salad',
+        'French Fries',
+        'Toast'
+    ],
+    mainMenu: [
+        'Pizza',
+        'Burger',
+        'Pasta',
+    ],
+    workingHours: {
+        mon: {
+            open: 10,
+            close: 22
+        },
+        tue: {
+            open: 10,
+            close: 22
+        },
+        wed: {
+            open: 10,
+            close: 22
+        },
+        thu: {
+            open: 10,
+            close: 22
+        },
+        fri: {
+            open: 10,
+            close: 22
+        },
+        sat: {
+            open: 10,
+            close: 24
+        },
+        sun: {
+            open: 12,
+            close: 22
+        }
+    },
+    order: function(starterIndex,mainIndex){
+        return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+    }
+};
+
+console.log(restaurant);
+
+const arrayThree = [1,2,3];
+
+// We'll try to store the array data into variables indivisually
+
+// old method 
+
+const a = arrayThree[0];
+const b = arrayThree[1];
+const c = arrayThree[2];
+
+// array destructuring method 
+
+const [xx,yy,zz] = arrayThree;
+
+console.log(xx,yy,zz);
+
+// '[]' sign on left side means that we are performing array destructuring & on right right means we are declaring an array.
+
+// destructuring 'restaurant'
+
+const [first,second] = restaurant.categories;
+
+console.log(first,second);
+
+// skipping the second element
+
+let [third , , fifth] = restaurant.categories;
+
+console.log(third,fifth);
+
+// swapping two elements using destructuring
+
+[fifth,third] = [third, fifth];
+
+console.log(third,fifth);
 
 
+// calling order function
+
+let [starter,main] = restaurant.order(2,0);
+
+console.log("Your order details : Starter : "+starter+ " and main menu is "+main+".");
+
+// nested array destructuring
+
+const arrayNested = [1,2,3, [4,5]];
+let [p,,,q] = arrayNested;
+
+console.log(p,q);
+
+let [pp,,,[qq,rr]] = arrayNested;
+
+console.log(pp,qq,rr);
+
+// default values destructuring
+
+const arrayNum = [8,9];
+
+let [l=1,m=1,n=1] = [8,9];
+
+console.log(l,m,n);
+
+/**
+ * Destructuring objects
+ */
+
+const {name,categories,workingHours} = restaurant;
+
+console.log(name,categories,workingHours);
+
+// different variable name from properties
+
+const {name: resName,workingHours: resOpeningHours,categories: resCategories} = restaurant;
+
+console.log(resName,resCategories,resOpeningHours);
