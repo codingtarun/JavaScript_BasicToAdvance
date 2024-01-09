@@ -284,7 +284,13 @@ while(x < 10){
  */
 
 /**
- * Guess The Number Script
+ * Guess The Number Game script
+ * 
+ * Steps 
+ * 1. Reset Highscore , your score , input fields and messages when page loads.
+ * 2. Generate a random number and store it in variable.
+ * 3. Create variables and store the element instance.
+ * 4. 
  */
 
 /**
@@ -296,62 +302,87 @@ while(x < 10){
  *  
  */
 
-const highScoreText = document.getElementById('high-score');
-const yourScoreText = document.getElementById('your-score');
-const inputNumberInput = document.getElementById('input-number');
-var guessClueText = document.getElementById('guess-clue');
-const checkInputButton = document.getElementById('check-input');
-
-/**
- * getting the text content of the element
- */
-console.log(highScoreText.textContent);
-console.log(yourScoreText.textContent);
-
-/**
- * Setting the text content of the element
- */
-
-/**
- * Reset the high score & your score
- */
-highScoreText.textContent = 0;
-yourScoreText.textContent = 0;
+const textHighScore = document.getElementById('high-score');
+const textYourScore = document.getElementById('your-score');
+const inputInputNumber = document.getElementById('input-number');
+var textGuessClue = document.getElementById('guess-clue');
+const buttonCheckInput = document.getElementById('check-input');
+const buttonResetGame = document.getElementById('reset-game');
 
 
 /**
- * Generating & storing a random number into a variable
+ * Get text content of the element
  */
 
-const generateRandomNumber = () => Math.floor(Math.random() * 21); // used an arrow function to return an random bumber between 1 and 20
-const randomNumber = generateRandomNumber();
-console.log(`Random Number : ${randomNumber}.`);
-
+console.log(textHighScore.textContent);
+console.log(textYourScore.textContent);
 
 /**
- * Handling a 'click' event
+ * Set the text content
  */
 
-checkInputButton.addEventListener('click',function(){
-    console.log(inputNumberInput.value);
-    if(!inputNumberInput.value){
-        guessClueText.textContent = `Enter value between 1 & 20.`;
-    }else{
-        if(inputNumberInput.value < 1 || inputNumberInput.value > 20){
-            guessClueText.textContent = `Enter value between 1 & 20.`;
-        }else {
-            if(randomNumber > inputNumberInput.value){
-                guessClueText.textContent = `Too Low!!!`;
-            }else if (randomNumber < inputNumberInput.value){
-                guessClueText.textContent = `Too high!!!`;
-            }else if(randomNumber == inputNumberInput.value){
-                guessClueText.textContent = `You won!!!`;
-            }else {
-                guessClueText.textContent = `Something wrong!!!`;
-            }
-        }
-    }
+textHighScore.textContent = 0;
+textYourScore.textContent = 20;
+textGuessClue.textContent = `Enter a number between 1 and 20`;
+
+/**
+ * Generate a random number and store it in a variable
+ * 
+ * using an arrow function to generate a random number
+ */
+
+const geneateRandomNumber = () => Math.floor(Math.random * 21); 
+
+let randomNumber = geneateRandomNumber();
+
+console.log(`Random Number : ${randomNumber}`);
+
+
+
+// /**
+//  * Handling a 'click' event
+//  */
+
+// checkInputButton.addEventListener('click',function(){
+//     console.log(inputNumberInput.value);
+//     if(!inputNumberInput.value){
+//         guessClueText.textContent = `Enter value between 1 & 20.`;
+//     }else{
+//         if(inputNumberInput.value < 1 || inputNumberInput.value > 20){
+//             guessClueText.textContent = `Enter value between 1 & 20.`;
+//             inputNumberInput.value = '';
+//         }else {
+//             if(randomNumber > inputNumberInput.value){
+//                 guessClueText.textContent = `Too Low!!!`;
+//                 yourScoreText.textContent -- ;
+//                 inputNumberInput.value = '';
+//             }else if (randomNumber < inputNumberInput.value){
+//                 guessClueText.textContent = `Too high!!!`;
+//                 yourScoreText.textContent -- ;
+//                 inputNumberInput.value = '';
+//             }else if(randomNumber == inputNumberInput.value){
+//                 guessClueText.textContent = `You won!!! Your socre is ${yourScoreText.textContent}`;
+//                 if(highScoreText.textContent < yourScoreText.textContent){
+//                     highScoreText.textContent = yourScoreText.textContent;
+//                 }
+//             }else {
+//                 guessClueText.textContent = `Something wrong!!!`;
+//                 inputNumberInput.value = '';
+//             }
+//         }
+//     }
     
-});
+// });
+
+// /**
+//  * Reset button event handling
+//  */
+// resetGameButton.addEventListener('click',function(){
+//     //highScoreText.textContent = 0;
+//     yourScoreText.textContent = 20;
+//     guessClueText.textContent  = "Enter a game between 1 to 20";
+//     const randomNumber = generateRandomNumber();
+//     console.log(`Random Number : ${randomNumber}.`);
+// });
 
 
